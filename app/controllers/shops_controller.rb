@@ -4,6 +4,7 @@ class ShopsController < ApplicationController
 	def index
 		@shops = Shop.all
 		@user = current_user
+		@location = request.location
 	end
 
 	def show
