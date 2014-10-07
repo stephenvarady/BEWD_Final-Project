@@ -14,7 +14,7 @@
 		<% @shops.each do |shop|%>
 			<tr>
 				<td><%= link_to shop.name, shop %></td>
-				<td><%= shop.distance_to(@location) %></td>
+				<td><%= shop.distance_to([@location.latitude, @location.longitude]) %> miles away</td>
 			</tr>
 		<% end %>
 	</tbody>

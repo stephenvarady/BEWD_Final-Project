@@ -11,7 +11,7 @@
 <div class="navbar navbar-default">
   	<ul class="nav navbar-nav">
    			<% if user_signed_in? %>
-   				<span style="color:white">Welcome back, <%= current_user.email %></span>
+   				<span style="color:black">Welcome back, <%= current_user.email %></span>
       		<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     		<% else %>
      			Welcome to Beanie <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
