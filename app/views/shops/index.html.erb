@@ -1,13 +1,11 @@
 <%= link_to "+ Add New Shop", new_shop_path %>
 <br><br>
-<% if user_signed_in? %>
 <div>Current location: <%= @location.latitude %>, <%= @location.longitude %></div>
-<% end %>
 
 <table class="table table-striped table-hover ">
 	<thead>
 		<tr>
-			<h3>Purveyors of Dank Bean</h3>
+			<h4>Purveyors of Dank Bean</h4>
 		</tr>
 	</thead>
 	<tbody>
