@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beanie</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="navbar navbar-default">
+  	<ul class="nav navbar-nav">
+   			<% if user_signed_in? %>
+   				<span style="color:white">Welcome back, <%= current_user.email %></span>
+      		<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    		<% else %>
+     			Welcome to Beanie <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
+    		<% end %>
+	</ul>
+</div>
+
+<%= yield %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<%= form_for @shop do |f| %>
+<form class="form-horizontal">
+  <fieldset>
+      <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+      </div>
+      <div class="form-group">
+        <%= f.label :address %>
+        <%= f.text_field :street %>
+      </div>
+      <div class="form-group">
+        <%= f.label :borough %>
+        <%= f.select :city, ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"] %>
+      </div>
+      <div class="form-group">
+        <%= f.label :state %>
+        <%= f.select :state, ["New York", "New Jersey", "Connecticut"] %>
+      </div>
+      <div class="form-group">
+        <%= f.label :country %>
+        <%= f.select :country, ["United States"] %>
+      </div>
+  </fieldset>
+  <%= f.submit %>
+</form>
+<% end %>
