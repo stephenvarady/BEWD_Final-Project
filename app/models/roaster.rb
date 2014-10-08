@@ -1,4 +1,3 @@
 class Roaster < ActiveRecord::Base
-	def index
-	end
+	has_many :shops
 end

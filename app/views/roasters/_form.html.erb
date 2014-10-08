@@ -1,0 +1,11 @@
+<%= form_for @roaster do |f| %>
+<form class="form-horizontal">
+  <fieldset>
+      <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+      </div>
+  </fieldset>
+  <%= f.submit %>
+</form>
+<% end %>

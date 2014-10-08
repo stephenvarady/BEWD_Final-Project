@@ -2,6 +2,8 @@
 <br><br>
 <div>Current location: <%= @location.latitude %>, <%= @location.longitude %></div>
 
+<div><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x450&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %></div>
+
 <table class="table table-striped table-hover ">
 	<thead>
 		<tr>
@@ -12,7 +14,7 @@
 		<% @shops.each do |shop|%>
 			<tr>
 				<td><%= link_to shop.name, shop %></td>
-				<td><%= shop.distance_to([@location.latitude, @location.longitude]) %> miles away</td>
+				<td><%= shop.distance_to([@location.latitude, @location.longitude]).round(2) %> miles away</td>
 			</tr>
 		<% end %>
 	</tbody>

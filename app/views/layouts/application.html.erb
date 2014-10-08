@@ -9,15 +9,29 @@
 <body>
 
 <div class="navbar navbar-default">
-  	<ul class="nav navbar-nav">
-   			<% if user_signed_in? %>
-   				<span style="color:black">Welcome back, <%= current_user.email %></span>
-      		<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    		<% else %>
-     			Welcome to Beanie <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
-    		<% end %>
-	</ul>
+	<div class="navbar-header">
+			<a class="navbar-brand" href="#">Beanie</a>
+	</div>
+	<div class="navbar-collapse collapse navbar-responsive-collapse">
+    			<ul class="nav navbar-nav">
+      				<li><%= link_to "Coffee Shops", shops_path %></li>
+      				<li><%= link_to "Coffee Roasters", roasters_path %></li>
+  				</ul>
+  	</div>
+  	<div>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<% if user_signed_in? %>
+					<span style="color:black">Welcome back, <%= current_user.email %></span>
+					<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+				<% else %>
+						Welcome to Beanie <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
+				<% end %>
+			</li>
+		</ul>
+	</div>
 </div>
+
 
 <%= yield %>
 
