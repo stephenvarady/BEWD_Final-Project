@@ -1,5 +1,5 @@
 class RoastersController < ApplicationController
-	before_action :load_roaster, only: [:edit, :show, :update]
+	before_action :load_roaster, only: [:edit, :show, :update, :destroy]
 
 	def index
 		@roasters = Roaster.all
@@ -30,6 +30,11 @@ class RoastersController < ApplicationController
 		else
 			render 'edit'
 		end
+	end
+
+	def destroy
+		@roaster.destroy
+		redirect_to roasters_url
 	end
 
 	private
