@@ -1,5 +1,3 @@
-<%= link_to "+ Add New Shop", new_shop_path %>
-<br><br>
 <div>Current location: <%= @location.latitude %>, <%= @location.longitude %></div>
 
 <div><%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x450&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %></div>
@@ -19,3 +17,4 @@
 		<% end %>
 	</tbody>
 </table>
+<%= link_to "Add New Shop", new_shop_path, class: "btn btn-success" %>

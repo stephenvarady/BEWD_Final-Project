@@ -7,7 +7,12 @@ Shop.create name: "Parlor Coffee",
 
 Shop.create name: "Stumptown Coffee Roasters",
 			street: "30 W 8th Street",
-			city: "New York",
+			city: "Manhattan",
+			state: "New York"
+
+Shop.create name: "Third Rail Coffee",
+			street: "30 W 8th Street",
+			city: "Manhattan",
 			state: "New York"
 
 puts 'Done adding shops'

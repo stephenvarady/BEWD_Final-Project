@@ -3,25 +3,25 @@
   <fieldset>
       <div class="form-group">
           <%= f.label :name %>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :address %>
-        <%= f.text_field :street %>
+        <%= f.text_field :street, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :borough %>
-        <%= f.select :city, ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"] %>
+        <%= f.select(:city, ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"], {}, {class: "form-control"}) %>
       </div>
       <div class="form-group">
         <%= f.label :state %>
-        <%= f.select :state, ["New York", "New Jersey", "Connecticut"] %>
+        <%= f.select(:state, ["New York", "New Jersey", "Connecticut"], {}, {class: "form-control"}) %>
       </div>
       <div class="form-group">
         <%= f.label :country %>
-        <%= f.select :country, ["United States"] %>
+        <%= f.select(:country, ["United States"], {}, {class: "form-control"}) %>
       </div>
   </fieldset>
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-warning" %>
 </form>
 <% end %>

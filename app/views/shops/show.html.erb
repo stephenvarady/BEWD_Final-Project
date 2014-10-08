@@ -1,10 +1,11 @@
 <h3><%= @shop.name %></h3><br>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x450&sensor=false&zoom=16&markers=#{@shop.latitude}%2C#{@shop.longitude}" %>
+<br><br>
 <%= @shop.street %><br>
 <%= @shop.city %><br>
 <%= @shop.state %><br>
 <%= @shop.latitude %><br>
 <%= @shop.longitude %>
 <br><br>
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x450&sensor=false&zoom=16&markers=#{@shop.latitude}%2C#{@shop.longitude}" %>
-<br><br>
-<%= link_to "Edit Shop", edit_shop_path %>
+<%= link_to "Edit Shop", edit_shop_path, class: "btn btn-default" %>
+<%= link_to "Delete Shop", @shop, method: :delete,  data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

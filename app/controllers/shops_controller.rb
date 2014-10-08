@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-	before_action :load_shop, only: [:edit, :show, :update]
+	before_action :load_shop, only: [:edit, :show, :update, :destroy]
 
 	def index
 		@shops = Shop.all
@@ -34,7 +34,9 @@ class ShopsController < ApplicationController
 	def edit
 	end
 
-	def delete
+	def destroy
+		@shop.destroy
+		redirect_to shops_url
 	end
 
 	private
