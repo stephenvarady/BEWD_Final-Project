@@ -30,7 +30,7 @@ gem 'devise'
 
 gem "geocoder"
 
-# gem "rails_12factor", group: :production
+gem "rails_12factor", group: :production
 
 gem 'gmaps4rails'
 
