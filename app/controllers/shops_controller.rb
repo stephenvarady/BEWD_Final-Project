@@ -5,9 +5,9 @@ class ShopsController < ApplicationController
 		@shops = Shop.all
 		@user = current_user
 		@location = request.location
-		@hash = Gmaps4rails.build_markers(@location) do |location, marker|
-		  marker.lat location.latitude
-		  marker.lng location.longitude
+		@hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
+		  marker.lat shop.latitude
+		  marker.lng shop.longitude
 		end
 	end
 
