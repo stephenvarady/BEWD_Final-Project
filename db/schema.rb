@@ -13,6 +13,36 @@
 
 ActiveRecord::Schema.define(version: 20141007003556) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "artists", force: true do |t|
+    t.string   "name"
+    t.string   "nationality"
+    t.date     "dob"
+    t.text     "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "museums", force: true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "paintings", force: true do |t|
+    t.string   "title"
+    t.integer  "year"
+    t.string   "style"
+    t.text     "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "artist_id"
+    t.integer  "museum_id"
+  end
+
   create_table "roasters", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -48,7 +78,7 @@ ActiveRecord::Schema.define(version: 20141007003556) do
     t.float    "longitude"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

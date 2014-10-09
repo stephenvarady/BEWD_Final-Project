@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div style="text-align:right">
+<div style="text-align:right; margin-top:10px; margin-bottom:10px" >
 	<% if user_signed_in? %>
 		<span>Welcome back, <%= current_user.email + "  " %></span>
 		<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
