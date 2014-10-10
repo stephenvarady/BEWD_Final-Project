@@ -6,12 +6,14 @@ class RoastersController < ApplicationController
 	end
 
 	def edit
+		@shops = Shop.all
 	end
 
 	def show
 	end
 
 	def new
+		@shops = Shop.all
 		@roaster = Roaster.new
 	end
 
@@ -49,4 +51,5 @@ class RoastersController < ApplicationController
     	flash.now[:notice] = "Invalid Roaster ID #{params[:id]}"
     	redirect_to root_path
   	end
+
 end

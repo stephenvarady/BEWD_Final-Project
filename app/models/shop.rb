@@ -1,5 +1,6 @@
 class Shop < ActiveRecord::Base
-	has_many :roasters
+	has_many :accounts
+	has_many :roasters, :through => :accounts
 
 	geocoded_by :address
 	after_validation :geocode

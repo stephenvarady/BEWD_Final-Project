@@ -1,11 +1,19 @@
-<%= form_for @roaster do |f| %>
-<form class="form-horizontal">
+<%= form_for @roaster, class: "form-horizontal" do |f| %>
   <fieldset>
-      <div class="form-group">
-          <%= f.label :name %>
-          <%= f.text_field :name, class: "form-control" %>
-      </div>
+      	<div class="form-group">
+	        <%= f.label :name %>
+	        <%= f.text_field :name, class: "form-control" %>
+      	</div>
+     	<div class='fields'>
+		    <%= f.label :accounts %>
+	    </div>
+	    <div>
+		    <% @shops.each do |shop| %>
+    			<div><%= check_box_tag 'shop_ids[]', shop.id %>
+    			<%= h shop.name %></div>
+  			<% end %>
+    	</div>
   </fieldset>
-  <%= f.submit class: "btn btn-warning" %>
-</form>
+  <br>
+  <div><%= f.submit class: "btn btn-warning" %></div>
 <% end %>

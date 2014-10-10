@@ -1,3 +1,4 @@
 class Roaster < ActiveRecord::Base
-	has_many :shops
+	has_many :accounts
+	has_many :shops, :through => :accounts
 end
