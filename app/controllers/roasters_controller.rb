@@ -2,7 +2,13 @@ class RoastersController < ApplicationController
 	before_action :load_roaster, only: [:edit, :show, :update, :destroy]
 
 	def index
+		@shops = Shop.all
 		@roasters = Roaster.all
+		@location = request.location
+		@hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
+		  marker.lat shop.latitude
+		  marker.lng shop.longitude
+		end
 	end
 
 	def edit
@@ -10,6 +16,25 @@ class RoastersController < ApplicationController
 	end
 
 	def show
+		@accounts = Account.all
+		@shops = Shop.all
+
+		# Looks through all accounts, if roaster_id matches 
+		# the current roaster page, returns array of shop names.
+		# @shop_list = @accounts.map do |account|
+		# 	if account.roaster_id === @roaster.id
+		# 		account.shop.name
+		# 	end
+		# end
+
+		@shop_list = @accounts.select { |account| account.roaster_id == @roaster.id }
+		@shop_names = @shop_list.map { |account| account.shop.name if account.shop != nil }
+
+		@hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
+		  marker.lat shop.latitude
+		  marker.lng shop.longitude
+		end
+
 	end
 
 	def new
@@ -20,6 +45,7 @@ class RoastersController < ApplicationController
 	def create
 		@roaster = Roaster.new(safe_roaster_params)
 		if @roaster.save
+			##
 			redirect_to @roaster
 		else
 			render 'new'
@@ -28,6 +54,18 @@ class RoastersController < ApplicationController
 
 	def update
 		if @roaster.update(safe_roaster_params)
+
+			# Collects checked boxes from form (array of IDs)
+			 accounts = params[:roaster][:shop_ids] ||= []
+			 shops_with_account = accounts.collect
+			# Saves roaster_id and shop_id to join model
+			shops_with_account.map do |shop|
+				account = Account.new(:roaster_id => @roaster.id,:shop_id => shop)
+				if account.valid?
+					account.save!
+				end
+			end
+
 			redirect_to @roaster
 		else
 			render 'edit'

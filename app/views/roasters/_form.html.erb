@@ -9,8 +9,11 @@
 	    </div>
 	    <div>
 		    <% @shops.each do |shop| %>
-    			<div><%= check_box_tag 'shop_ids[]', shop.id %>
-    			<%= h shop.name %></div>
+    			<div>
+					
+    				<%= check_box_tag "roaster[shop_ids][]", shop.id, @roaster.relationship(@roaster.id, shop.id) %>
+    				<%= shop.name %>
+    			</div>
   			<% end %>
     	</div>
   </fieldset>
